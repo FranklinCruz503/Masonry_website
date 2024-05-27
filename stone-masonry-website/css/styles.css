@@ -1,34 +1,135 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
     color: #333;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body takes full viewport height */
 }
 
 header {
     background-color: #333;
     color: #fff;
-    padding: 1rem;
+    padding: 0.5rem;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.contact-info {
+    background-color: #ffc107;
+    color: #000;
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-content {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center;
+    padding: 0.5rem 1rem;
+    width: 100%; /* Ensure it takes full width */
+    position: relative;
+}
+
+.header-content .logo {
+    margin: 0 auto; /* Center the logo */
+    max-height: 50px; /* Adjust as needed */
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center items vertically */
+    flex-wrap: wrap;
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 1rem;
+    margin: 0.5rem 0.75rem;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    display: block;
+    font-size: 1.1rem;
 }
 
-main {
+.hero {
+    background: url('path/to/hero-image.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-top: 120px; /* Adjusted space for the fixed header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh; /* Ensure hero section takes up the appropriate height */
+}
+
+.hero-text {
+    background: rgba(0, 0, 0, 0.5);
     padding: 2rem;
+    border-radius: 10px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.cta-button {
+    background-color: #ffc107;
+    color: #000;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    max-width: 80%;
+    width: 100%;
+}
+
+.services, .location {
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.services {
+    background-color: #fff;
+    margin-top: 1rem;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.location iframe {
+    width: 100%;
+    height: 300px;
+    border: 0;
 }
 
 footer {
@@ -36,7 +137,57 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1rem;
-    position: absolute;
-    bottom: 0;
     width: 100%;
+    position: relative;
+    bottom: 0;
 }
+
+/* Media Query for tablets and above */
+@media (min-width: 600px) {
+    nav ul {
+        justify-content: space-around;
+    }
+
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* General Mobile Devices */
+@media (max-width: 599px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 1rem 0;
+    }
+
+    .contact-info {
+        font-size: 0.8rem; /* Smaller font for mobile */
+        padding: 0.5rem;   /* Adjust padding for better fit */
+        text-align: center; /* Ensure text alignment center */
+    }
+
+    .cta-button {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem; /* Slightly smaller text for mobile */
+    }
+}
+
+/* High-resolution smartphones and larger mobile devices */
+@media (max-width: 1024px) {
+    .contact-info {
+        font-size: 0.9rem; /* Slightly larger font for high-res screens */
+        padding: 0.5rem 1rem; /* Adjust padding */
+    }
+
+    .cta-button {
+        padding: 1rem 2rem; /* Adjust button padding */
+        font-size: 1rem;    /* Regular font size for buttons
